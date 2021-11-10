@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.operation.OperationalStatisticsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--停车区-->
+
+                <View
+                    android:id="@+id/area_parking_lot"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/operational_statistics_item_height"
+                    android:onClick="@{(view) -> viewmodel.gotoParkingLot(view)}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_parking_lot"
+                    android:layout_width="@dimen/operational_statistics_item_icon_width"
+                    android:layout_height="@dimen/operational_statistics_item_icon_height"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:onClick="@{(view) -> viewmodel.gotoParkingLot(view)}"
+                    android:src="@drawable/ic_parking_lot"
+                    app:layout_constraintBottom_toBottomOf="@id/area_parking_lot"
+                    app:layout_constraintLeft_toLeftOf="@id/area_parking_lot"
+                    app:layout_constraintTop_toTopOf="@id/area_parking_lot" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{(view) -> viewmodel.gotoParkingLot(view)}"
+                    android:text="停车区"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_parking_lot"
+                    app:layout_constraintLeft_toRightOf="@id/iv_parking_lot"
+                    app:layout_constraintTop_toTopOf="@id/area_parking_lot" />
+
+                <ImageView
+                    android:id="@+id/iv_parking_lot_arrow"
+                    android:layout_width="@dimen/operational_statistics_item_arrow_width"
+                    android:layout_height="@dimen/operational_statistics_item_arrow_height"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:onClick="@{(view) -> viewmodel.gotoParkingLot(view)}"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@id/area_parking_lot"
+                    app:layout_constraintRight_toRightOf="@id/area_parking_lot"
+                    app:layout_constraintTop_toTopOf="@id/area_parking_lot" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:onClick="@{(view) -> viewmodel.gotoParkingLot(view)}"
+                    android:text="888"
+                    android:textColor="#4272EA"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_parking_lot"
+                    app:layout_constraintRight_toLeftOf="@id/iv_parking_lot_arrow"
+                    app:layout_constraintTop_toTopOf="@id/area_parking_lot" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="#F7F7F7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_parking_lot" />
+
+                <!--订单查询-->
+                <View
+                    android:id="@+id/area_order_tracking"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/operational_statistics_item_height"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_parking_lot"
+                    android:onClick="@{(view) -> viewmodel.gotoOrderTracking(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_order_tracking"
+                    android:layout_width="@dimen/operational_statistics_item_icon_width"
+                    android:layout_height="@dimen/operational_statistics_item_icon_height"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_order_tracking"
+                    app:layout_constraintBottom_toBottomOf="@id/area_order_tracking"
+                    app:layout_constraintLeft_toLeftOf="@id/area_order_tracking"
+                    app:layout_constraintTop_toTopOf="@id/area_order_tracking"
+                    android:onClick="@{(view) -> viewmodel.gotoOrderTracking(view)}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="订单查询"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_order_tracking"
+                    app:layout_constraintLeft_toRightOf="@id/iv_order_tracking"
+                    app:layout_constraintTop_toTopOf="@id/area_order_tracking"
+                    android:onClick="@{(view) -> viewmodel.gotoOrderTracking(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_order_tracking_arrow"
+                    android:layout_width="@dimen/operational_statistics_item_arrow_width"
+                    android:layout_height="@dimen/operational_statistics_item_arrow_height"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@id/area_order_tracking"
+                    app:layout_constraintRight_toRightOf="@id/area_order_tracking"
+                    app:layout_constraintTop_toTopOf="@id/area_order_tracking"
+                    android:onClick="@{(view) -> viewmodel.gotoOrderTracking(view)}"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="#F7F7F7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_order_tracking" />
+                <!--换电统计-->
+                <View
+                    android:id="@+id/area_power_exchange_statistics"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/operational_statistics_item_height"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_order_tracking"
+                    android:onClick="@{(view) -> viewmodel.gotoPowerExchangeStatistics(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_power_exchange_statistics"
+                    android:layout_width="@dimen/operational_statistics_item_icon_width"
+                    android:layout_height="@dimen/operational_statistics_item_icon_height"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_power_exchange_statistics"
+                    app:layout_constraintBottom_toBottomOf="@id/area_power_exchange_statistics"
+                    app:layout_constraintLeft_toLeftOf="@id/area_power_exchange_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_power_exchange_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoPowerExchangeStatistics(view)}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="换电统计"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_power_exchange_statistics"
+                    app:layout_constraintLeft_toRightOf="@id/iv_power_exchange_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_power_exchange_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoPowerExchangeStatistics(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_power_exchange_statistics_arrow"
+                    android:layout_width="@dimen/operational_statistics_item_arrow_width"
+                    android:layout_height="@dimen/operational_statistics_item_arrow_height"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@id/area_power_exchange_statistics"
+                    app:layout_constraintRight_toRightOf="@id/area_power_exchange_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_power_exchange_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoPowerExchangeStatistics(view)}"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="#F7F7F7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_power_exchange_statistics" />
+                <!--挪车统计-->
+                <View
+                    android:id="@+id/area_moving_statistics"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/operational_statistics_item_height"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_power_exchange_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoMovingStatistics(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_moving_statistics"
+                    android:layout_width="@dimen/operational_statistics_item_icon_width"
+                    android:layout_height="@dimen/operational_statistics_item_icon_height"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_moving_statistics"
+                    app:layout_constraintBottom_toBottomOf="@id/area_moving_statistics"
+                    app:layout_constraintLeft_toLeftOf="@id/area_moving_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_moving_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoMovingStatistics(view)}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="挪车统计"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_moving_statistics"
+                    app:layout_constraintLeft_toRightOf="@id/iv_moving_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_moving_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoMovingStatistics(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_moving_statistics_arrow"
+                    android:layout_width="@dimen/operational_statistics_item_arrow_width"
+                    android:layout_height="@dimen/operational_statistics_item_arrow_height"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@id/area_moving_statistics"
+                    app:layout_constraintRight_toRightOf="@id/area_moving_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_moving_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoMovingStatistics(view)}"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="#F7F7F7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_moving_statistics" />
+                <!--维修统计-->
+                <View
+                    android:id="@+id/area_maintenance_statistics"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/operational_statistics_item_height"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_moving_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoMaintenanceStatistics(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_maintenance_statistics"
+                    android:layout_width="@dimen/operational_statistics_item_icon_width"
+                    android:layout_height="@dimen/operational_statistics_item_icon_height"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_maintenance_statistics"
+                    app:layout_constraintBottom_toBottomOf="@id/area_maintenance_statistics"
+                    app:layout_constraintLeft_toLeftOf="@id/area_maintenance_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_maintenance_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoMaintenanceStatistics(view)}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="维修统计"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_maintenance_statistics"
+                    app:layout_constraintLeft_toRightOf="@id/iv_maintenance_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_maintenance_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoMaintenanceStatistics(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_maintenance_statistics_arrow"
+                    android:layout_width="@dimen/operational_statistics_item_arrow_width"
+                    android:layout_height="@dimen/operational_statistics_item_arrow_height"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@id/area_maintenance_statistics"
+                    app:layout_constraintRight_toRightOf="@id/area_maintenance_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_maintenance_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoMaintenanceStatistics(view)}"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="#F7F7F7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_maintenance_statistics" />
+                <!--巡检统计-->
+                <View
+                    android:id="@+id/area_inspection_statistics"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/operational_statistics_item_height"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_maintenance_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoInspectionStatistics(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_inspection_statistics"
+                    android:layout_width="@dimen/operational_statistics_item_icon_width"
+                    android:layout_height="@dimen/operational_statistics_item_icon_height"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_inspection_statistics"
+                    app:layout_constraintBottom_toBottomOf="@id/area_inspection_statistics"
+                    app:layout_constraintLeft_toLeftOf="@id/area_inspection_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_inspection_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoInspectionStatistics(view)}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="订单查询"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_inspection_statistics"
+                    app:layout_constraintLeft_toRightOf="@id/iv_inspection_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_inspection_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoInspectionStatistics(view)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_inspection_statistics_arrow"
+                    android:layout_width="@dimen/operational_statistics_item_arrow_width"
+                    android:layout_height="@dimen/operational_statistics_item_arrow_height"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@id/area_inspection_statistics"
+                    app:layout_constraintRight_toRightOf="@id/area_inspection_statistics"
+                    app:layout_constraintTop_toTopOf="@id/area_inspection_statistics"
+                    android:onClick="@{(view) -> viewmodel.gotoInspectionStatistics(view)}"/>
+
+                <!--<View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="#F7F7F7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_inspection_statistics" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

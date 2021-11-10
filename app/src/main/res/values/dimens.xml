@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--common-->
+    <dimen name="main_menu_text_size">12sp</dimen>
+    <dimen name="default_horizontal_offset">15dp</dimen>
+    <dimen name="default_vertical_offset">15dp</dimen>
+    <dimen name="bike_detail_row_vertical_offset">10dp</dimen>
+
+    <!--首页-->
+    <dimen name="icon_text_size">10sp</dimen>
+
+    <!--运维管理-->
+
+    <!--运营统计-->
+
+    <!--个人中心-->
+
+    <!--扫一扫-->
+
+    <!--挪车-->
+
+    <!--换电-->
+
+    <!--维修工单-->
+
+    <!--巡检工单-->
+
+    <!--车辆详情-->
+
+    <!--车辆检修-->
+    <dimen name="bike_detect_image_bg_width">70dp</dimen>
+    <dimen name="bike_detect_image_bg_height">70dp</dimen>
+    <dimen name="bike_detect_image_width">45dp</dimen>
+    <dimen name="bike_detect_image_height">45dp</dimen>
+    <!--运营统计-->
+    <dimen name="operational_statistics_item_height">60dp</dimen>
+    <dimen name="operational_statistics_item_icon_width">28dp</dimen>
+    <dimen name="operational_statistics_item_icon_height">28dp</dimen>
+    <dimen name="operational_statistics_item_arrow_width">24dp</dimen>
+    <dimen name="operational_statistics_item_arrow_height">24dp</dimen>
+</resources>

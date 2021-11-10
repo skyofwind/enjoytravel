@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4272EA"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/simulation_title"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_login_content_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/simulation_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_login"
+                    android:layout_width="145dp"
+                    android:layout_height="95dp"
+                    android:layout_marginTop="80dp"
+                    android:src="@drawable/ic_login"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:layout_marginTop="97dp"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:background="@drawable/login_bt"
+                    android:hint="请输入手机号码"
+                    android:inputType="number"
+                    android:paddingStart="65dp"
+                    android:paddingEnd="15dp"
+                    android:text="@={viewmodel.loginPhone}"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_login" />
+
+                <ImageView
+                    android:id="@+id/iv_phone"
+                    android:layout_width="18.75dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="26dp"
+                    android:src="@drawable/ic_phone"
+                    app:layout_constraintBottom_toBottomOf="@id/et_phone"
+                    app:layout_constraintLeft_toLeftOf="@id/et_phone"
+                    app:layout_constraintTop_toTopOf="@id/et_phone" />
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:background="@drawable/login_bt"
+                    android:hint="请输入手机密码"
+                    android:inputType="textPassword"
+                    android:paddingStart="65dp"
+                    android:paddingEnd="15dp"
+                    android:text="@={viewmodel.loginPass}"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="16sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_phone" />
+
+                <ImageView
+                    android:id="@+id/iv_lock"
+                    android:layout_width="18.75dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="26dp"
+                    android:src="@drawable/ic_lock"
+                    app:layout_constraintBottom_toBottomOf="@id/et_password"
+                    app:layout_constraintLeft_toLeftOf="@id/et_password"
+                    app:layout_constraintTop_toTopOf="@id/et_password" />
+
+                <CheckBox
+                    android:id="@+id/cb_disagreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:checked="@={viewmodel.checked}"
+                    android:text="《用户协议》"
+                    android:textColor="#8F8F8F"
+                    android:textSize="12sp"
+                    app:layout_constraintLeft_toLeftOf="@id/et_password"
+                    app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+                <Button
+                    android:id="@+id/bt_login"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/shape_rectangle_blue_content_radius_90dp"
+                    android:onClick="@{() -> viewmodel.login()}"
+                    android:text="登录"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@id/et_password"
+                    app:layout_constraintRight_toRightOf="@id/et_password"
+                    app:layout_constraintTop_toBottomOf="@id/cb_disagreement" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.FoldingCube"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewmodel.sLoading? View.VISIBLE: View.GONE}"
+            app:SpinKit_Color="#ff4272ea"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

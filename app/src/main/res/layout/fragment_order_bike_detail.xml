@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.operation.OrderBikeDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/background_gray_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bike_detail_bottom_bg">
+
+                <com.amap.api.maps.TextureMapView
+                    android:id="@+id/mapView"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Space
+                    android:id="@+id/space"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/mapView"
+                    app:layout_constraintStart_toStartOf="@id/mapView" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_bike_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:background="@drawable/shape_common_white_radius_bg"
+                    android:paddingBottom="@dimen/default_vertical_offset"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/space">
+
+                    <ImageView
+                        android:id="@+id/iv_order_record"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/default_horizontal_offset"
+                        android:layout_marginTop="@dimen/default_vertical_offset"
+                        android:src="@drawable/ic_record"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="订单记录"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_order_record"
+                        app:layout_constraintLeft_toRightOf="@id/iv_order_record"
+                        app:layout_constraintTop_toTopOf="@id/iv_order_record" />
+
+                    <View
+                        android:id="@+id/split"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        android:clickable="false"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_vehicle_number_pre"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="车辆信息："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_order_record"
+                        app:layout_constraintTop_toBottomOf="@id/iv_order_record" />
+
+                    <TextView
+                        android:id="@+id/tv_vehicle_number_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="100600097"
+                        app:layout_constraintLeft_toRightOf="@id/tv_vehicle_number_pre"
+                        app:layout_constraintRight_toRightOf="@id/split"
+                        app:layout_constraintTop_toTopOf="@id/tv_vehicle_number_pre" />
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="用户姓名："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_order_record"
+                        app:layout_constraintTop_toBottomOf="@id/tv_vehicle_number_pre" />
+
+                    <TextView
+                        android:id="@+id/tv_user_name_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="张三"
+                        app:layout_constraintLeft_toRightOf="@id/tv_user_name"
+                        app:layout_constraintRight_toRightOf="@id/split"
+                        app:layout_constraintTop_toTopOf="@id/tv_user_name" />
+
+                    <TextView
+                        android:id="@+id/tv_order_amount"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="订单金额："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_order_record"
+                        app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
+
+                    <TextView
+                        android:id="@+id/tv_order_amount_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="5分15秒"
+                        app:layout_constraintLeft_toRightOf="@id/tv_order_amount"
+                        app:layout_constraintRight_toRightOf="@id/split"
+                        app:layout_constraintTop_toTopOf="@id/tv_order_amount" />
+
+                    <TextView
+                        android:id="@+id/tv_cycling_time"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="骑行时间："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_order_record"
+                        app:layout_constraintTop_toBottomOf="@id/tv_order_amount" />
+
+                    <TextView
+                        android:id="@+id/tv_cycling_time_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="5分15秒"
+                        app:layout_constraintLeft_toRightOf="@id/tv_cycling_time"
+                        app:layout_constraintRight_toRightOf="@id/split"
+                        app:layout_constraintTop_toTopOf="@id/tv_cycling_time" />
+
+                    <TextView
+                        android:id="@+id/tv_start"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="起点："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_order_record"
+                        app:layout_constraintTop_toBottomOf="@id/tv_cycling_time" />
+
+                    <TextView
+                        android:id="@+id/tv_start_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:layout_marginBottom="@dimen/default_vertical_offset"
+                        android:text="青山湖区艾溪湖管理处广阳J区1号楼（导航）"
+                        android:textColor="@color/default_black_color"
+                        app:layout_constraintLeft_toRightOf="@id/tv_start"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_start" />
+
+                    <TextView
+                        android:id="@+id/tv_end"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="终点："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_order_record"
+                        app:layout_constraintTop_toBottomOf="@id/tv_start_value" />
+
+                    <TextView
+                        android:id="@+id/tv_end_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:layout_marginBottom="@dimen/default_vertical_offset"
+                        android:text="青山湖区艾溪湖管理处广阳J区1号楼（导航）"
+                        android:textColor="@color/default_black_color"
+                        app:layout_constraintLeft_toRightOf="@id/tv_end"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_end" />
+
+                    <TextView
+                        android:id="@+id/tv_start_time"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="起始时间："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_order_record"
+                        app:layout_constraintTop_toBottomOf="@id/tv_end_value" />
+
+                    <TextView
+                        android:id="@+id/tv_start_time_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:text="2021-08-10  20:27:20 至 2021-08-10  20:27:20"
+                        android:textColor="@color/default_black_color"
+                        app:layout_constraintLeft_toRightOf="@id/tv_start_time"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_start_time" />
+
+                    <TextView
+                        android:id="@+id/tv_current_status"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设备编号："
+                        app:layout_constraintLeft_toLeftOf="@id/split"
+                        app:layout_constraintTop_toTopOf="@id/tv_vehicle_number_pre" />
+
+                    <TextView
+                        android:id="@+id/tv_current_status_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:text="866033000111"
+                        app:layout_constraintLeft_toRightOf="@id/tv_current_status"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_current_status" />
+
+                    <TextView
+                        android:id="@+id/tv_current_battery_pre"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="手机号："
+                        app:layout_constraintLeft_toLeftOf="@id/split"
+                        app:layout_constraintTop_toTopOf="@id/tv_user_name" />
+
+                    <TextView
+                        android:id="@+id/tv_current_battery_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:text="18888888888"
+                        android:textColor="#4272EA"
+                        app:layout_constraintLeft_toRightOf="@id/tv_current_battery_pre"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_current_battery_pre" />
+
+                    <TextView
+                        android:id="@+id/tv_order_status"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单状态："
+                        app:layout_constraintLeft_toLeftOf="@id/split"
+                        app:layout_constraintTop_toTopOf="@id/tv_order_amount" />
+
+                    <TextView
+                        android:id="@+id/tv_order_status_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:text="已支付"
+                        app:layout_constraintLeft_toRightOf="@id/tv_order_status"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_order_status" />
+
+                    <TextView
+                        android:id="@+id/tv_cycling_distance"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="骑行距离："
+                        app:layout_constraintLeft_toLeftOf="@id/split"
+                        app:layout_constraintTop_toTopOf="@id/tv_cycling_time" />
+
+                    <TextView
+                        android:id="@+id/tv_cycling_distance_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:text="1.438km"
+                        app:layout_constraintLeft_toRightOf="@id/tv_cycling_distance"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_cycling_distance" />
+
+                    <Button
+                        android:id="@+id/bt_end_trip"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/default_vertical_offset"
+                        android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+                        android:text="查询"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_start_time_value"
+                        app:layout_constraintWidth_percent="0.4" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/bt_history_order"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/shape_rectangle_blue_content_radius_20dp"
+                    android:gravity="center"
+                    android:onClick="@{(view) -> viewmodel.gotoHistoryOrder(view)}"
+                    android:text="查看历史订单记录"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="@id/cl_bike_message"
+                    app:layout_constraintRight_toRightOf="@id/cl_bike_message"
+                    app:layout_constraintTop_toBottomOf="@id/cl_bike_message"
+                    android:layout_marginTop="@dimen/default_vertical_offset" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_bike_control"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:layout_marginTop="@dimen/default_vertical_offset"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:layout_marginBottom="@dimen/default_vertical_offset"
+                    android:background="@drawable/shape_common_white_radius_bg"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/bt_history_order">
+
+                    <ImageView
+                        android:id="@+id/iv_bike"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/default_horizontal_offset"
+                        android:layout_marginTop="@dimen/default_vertical_offset"
+                        android:src="@drawable/bike_message_icon_blue"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="设备信息"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_bike"
+                        app:layout_constraintLeft_toRightOf="@id/iv_bike"
+                        app:layout_constraintTop_toTopOf="@id/iv_bike" />
+
+                    <View
+                        android:id="@+id/split2"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        android:clickable="false"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_device_number"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="设备编号："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_bike"
+                        app:layout_constraintTop_toBottomOf="@id/iv_bike" />
+
+                    <TextView
+                        android:id="@+id/tv_device_number_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="100600097"
+                        app:layout_constraintLeft_toRightOf="@id/tv_device_number"
+                        app:layout_constraintRight_toRightOf="@id/split2"
+                        app:layout_constraintTop_toTopOf="@id/tv_device_number" />
+
+                    <TextView
+                        android:id="@+id/tv_current_power"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="当前电量："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_bike"
+                        app:layout_constraintTop_toBottomOf="@id/tv_device_number_value" />
+
+                    <TextView
+                        android:id="@+id/tv_current_power_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="85%"
+                        app:layout_constraintLeft_toRightOf="@id/tv_current_power"
+                        app:layout_constraintRight_toRightOf="@id/split2"
+                        app:layout_constraintTop_toTopOf="@id/tv_current_power" />
+
+                    <TextView
+                        android:id="@+id/tv_fortified_state"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="设防状态："
+                        app:layout_constraintLeft_toLeftOf="@id/iv_bike"
+                        app:layout_constraintTop_toBottomOf="@id/tv_current_power_value" />
+
+                    <TextView
+                        android:id="@+id/tv_fortified_state_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="打开"
+                        app:layout_constraintLeft_toRightOf="@id/tv_fortified_state"
+                        app:layout_constraintRight_toRightOf="@id/split2"
+                        app:layout_constraintTop_toTopOf="@id/tv_fortified_state" />
+
+                    <TextView
+                        android:id="@+id/tv_bike_status"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="车辆状态："
+                        app:layout_constraintLeft_toRightOf="@id/split2"
+                        app:layout_constraintTop_toTopOf="@id/tv_device_number" />
+
+                    <TextView
+                        android:id="@+id/tv_bike_status_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:text="骑行中"
+                        app:layout_constraintLeft_toRightOf="@id/tv_bike_status"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_bike_status" />
+
+                    <TextView
+                        android:id="@+id/tv_switch_status"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="电门状态："
+                        app:layout_constraintLeft_toLeftOf="@id/tv_bike_status"
+                        app:layout_constraintTop_toBottomOf="@id/tv_bike_status_value" />
+
+                    <TextView
+                        android:id="@+id/tv_switch_status_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关闭"
+                        app:layout_constraintLeft_toRightOf="@id/tv_switch_status"
+                        app:layout_constraintTop_toTopOf="@id/tv_switch_status" />
+
+                    <TextView
+                        android:id="@+id/tv_switch_status_describe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/bike_switch_state_describe_bg_red"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="断电"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_switch_status_value"
+                        app:layout_constraintLeft_toRightOf="@id/tv_switch_status_value"
+                        app:layout_constraintTop_toTopOf="@id/tv_switch_status_value" />
+
+                    <TextView
+                        android:id="@+id/tv_wheel_lock_status"
+                        style="@style/bike_detail_text_pre_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/bike_detail_row_vertical_offset"
+                        android:text="后轮锁状态："
+                        app:layout_constraintLeft_toLeftOf="@id/tv_switch_status"
+                        app:layout_constraintTop_toBottomOf="@id/tv_switch_status_value" />
+
+                    <TextView
+                        android:id="@+id/tv_wheel_lock_status_value"
+                        style="@style/bike_detail_text_value_style"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:text="打开"
+                        app:layout_constraintLeft_toRightOf="@id/tv_wheel_lock_status"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_wheel_lock_status" />
+
+                    <Button
+                        android:id="@+id/bt_start"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/default_vertical_offset"
+                        android:layout_marginBottom="@dimen/default_vertical_offset"
+                        android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+                        android:text="启动"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/bt_lock"
+                        app:layout_constraintTop_toBottomOf="@id/tv_wheel_lock_status_value"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <Button
+                        android:id="@+id/bt_lock"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/default_vertical_offset"
+                        android:layout_marginBottom="@dimen/default_vertical_offset"
+                        android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+                        android:text="查询"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/bt_start"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_wheel_lock_status_value"
+                        app:layout_constraintWidth_percent="0.4" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

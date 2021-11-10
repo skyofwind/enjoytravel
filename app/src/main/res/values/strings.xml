@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">我享出行(管理端)</string>
+
+    <string name="tip_exit_app">再按一次退出程序</string>
+    <string name="text_time_beyond">开始时间大于结束时间</string>
+    <!--标签-->
+    <string name="text_home">首页</string>
+    <string name="text_operation_and_maintenance_management">运维管理</string>
+    <string name="text_operational_statistics">运营统计</string>
+    <string name="text_personal_center">个人中心</string>
+
+    <string name="text_scan_it">扫一扫</string>
+    <string name="text_move_the_car">挪车</string>
+    <string name="text_change_the_battery">换电</string>
+    <string name="text_repair_work_order">维修工单</string>
+    <string name="text_inspection_work_order">巡检工单</string>
+    
+    <!--登录-->
+    <string name="tip_login_agree">请确认同意用户协议</string>
+    <string name="tip_phone_empty">账号为空，请输入账号</string>
+    <string name="tip_pass_empty">密码为空，请输入密码</string>
+    <!--首页-->
+    <string name="value_battery_percentage">%</string>
+    <!--运维管理-->
+
+    <!--运营统计-->
+    <string name="value_complete_bike_order">完成：%1$d单</string>
+    <!--个人中心-->
+
+    <!--车辆列表-->
+    <string name="hint_input_bike_number">请输入车辆编号</string>
+    <string name="value_total_bike_number">总计：%1$d辆</string>
+    <string name="text_all_status">全部状态</string>
+    <string name="text_all_battery_power">全部电量</string>
+    <string name="text_distance">距离</string>
+    <string name="text_battery_power">电量</string>
+    <!--扫一扫-->
+    <string name="text_detail">详情</string>
+    <string name="text_unlock">开锁</string>
+    <string name="text_lock">关锁</string>
+    <string name="value_tip_connect_success">设备%1$s连接成功</string>
+    <string name="value_tip_connect_fail">设备%1$s连接失败</string>
+    <string name="value_tip_reconnect_fail">设备%1$s重连失败</string>
+    <!--挪车-->
+
+    <!--换电-->
+
+    <!--维修工单-->
+
+    <!--巡检工单-->
+    <string name="value_total_bike_order">总计：%1$d单</string>
+
+</resources>

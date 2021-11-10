@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_fragment_dest"
+        android:icon="@drawable/ic_front"
+        android:contentDescription="@string/text_home"
+        android:title="@string/text_home"
+        android:checked="true"
+        />
+    <item
+        android:id="@+id/operation_manager_fragment_dest"
+        android:icon="@drawable/ic_operation_and_maintenance_management"
+        android:contentDescription="@string/text_operation_and_maintenance_management"
+        android:title="@string/text_operation_and_maintenance_management"/>
+    <item
+        android:id="@+id/operational_statistics_fragment_dest"
+        android:icon="@drawable/ic_operational_statistics"
+        android:contentDescription="@string/text_operational_statistics"
+        android:title="@string/text_operational_statistics"/>
+    <item
+        android:id="@+id/personal_fragment_dest"
+        android:icon="@drawable/ic_personal_center"
+        android:contentDescription="@string/text_personal_center"
+        android:title="@string/text_personal_center"/>
+</menu>

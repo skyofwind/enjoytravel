@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.operation.OrderTrackingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <View
+                android:id="@+id/edit_bg"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_rectangle_blue_border_gray_content_radius_55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_scanner"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:onClick="@{(view) -> viewmodel.gotoScanBikeNumber(view)}"
+                android:src="@drawable/ic_scanner_blue"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toLeftOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <View
+                android:id="@+id/split"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:background="#DBDBDB"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/iv_scanner"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <EditText
+                android:id="@+id/et_bike_number"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:afterTextChanged="@{(s) -> viewmodel.onBikeNumberChange(s)}"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入车辆编号或设备号"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/default_black_color"
+                android:textColorHint="#B9B9B9"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/split"
+                app:layout_constraintRight_toRightOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/bt_inquire"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+            android:onClick="@{(view) -> viewmodel.gotoDetail(view)}"
+            android:text="查询"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_search"
+            app:layout_constraintVertical_bias="0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

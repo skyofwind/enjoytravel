@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray_color">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="110dp"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="70dp"
+                    android:src="@drawable/ic_login"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="我享出行运营端 V4.0.1"
+                    android:textColor="#8F8F8F"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_icon" />
+
+                <View
+                    android:id="@+id/area_user_agreement"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/operational_statistics_item_height"
+                    android:layout_marginTop="70dp"
+                    android:background="@color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_version" />
+
+                <ImageView
+                    android:id="@+id/iv_user_agreement"
+                    android:layout_width="@dimen/operational_statistics_item_icon_width"
+                    android:layout_height="@dimen/operational_statistics_item_icon_height"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_message"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@id/area_user_agreement"
+                    app:layout_constraintLeft_toLeftOf="@id/area_user_agreement"
+                    app:layout_constraintTop_toTopOf="@id/area_user_agreement" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="用户协议"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_user_agreement"
+                    app:layout_constraintLeft_toRightOf="@id/iv_user_agreement"
+                    app:layout_constraintTop_toTopOf="@id/area_user_agreement" />
+
+                <ImageView
+                    android:id="@+id/iv_user_agreement_arrow"
+                    android:layout_width="@dimen/operational_statistics_item_arrow_width"
+                    android:layout_height="@dimen/operational_statistics_item_arrow_height"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@id/area_user_agreement"
+                    app:layout_constraintRight_toRightOf="@id/area_user_agreement"
+                    app:layout_constraintTop_toTopOf="@id/area_user_agreement" />
+
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:text="888"
+                    android:textColor="#4272EA"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_user_agreement"
+                    app:layout_constraintRight_toLeftOf="@id/iv_user_agreement_arrow"
+                    app:layout_constraintTop_toTopOf="@id/area_user_agreement" />-->
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="@color/background_gray_color"
+                    app:layout_constraintStart_toStartOf="@id/iv_user_agreement"
+                    app:layout_constraintEnd_toEndOf="@id/area_user_agreement"
+                    app:layout_constraintBottom_toBottomOf="@id/area_user_agreement" />
+
+                <View
+                    android:id="@+id/area_recharge_agreement"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/operational_statistics_item_height"
+                    android:background="@color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_user_agreement" />
+
+                <ImageView
+                    android:id="@+id/iv_recharge_agreement"
+                    android:layout_width="@dimen/operational_statistics_item_icon_width"
+                    android:layout_height="@dimen/operational_statistics_item_icon_height"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_about_us"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@id/area_recharge_agreement"
+                    app:layout_constraintLeft_toLeftOf="@id/area_recharge_agreement"
+                    app:layout_constraintTop_toTopOf="@id/area_recharge_agreement" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="充值协议"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/area_recharge_agreement"
+                    app:layout_constraintLeft_toRightOf="@id/iv_recharge_agreement"
+                    app:layout_constraintTop_toTopOf="@id/area_recharge_agreement" />
+
+                <ImageView
+                    android:id="@+id/iv_recharge_agreement_arrow"
+                    android:layout_width="@dimen/operational_statistics_item_arrow_width"
+                    android:layout_height="@dimen/operational_statistics_item_arrow_height"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@id/area_recharge_agreement"
+                    app:layout_constraintRight_toRightOf="@id/area_recharge_agreement"
+                    app:layout_constraintTop_toTopOf="@id/area_recharge_agreement" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:background="#F7F7F7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/area_recharge_agreement" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

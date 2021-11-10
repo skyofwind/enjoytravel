@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.huishan.enjoytravel.data.remote.entity.HistoryRecordEntity" />
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.bikelist.HistoryOrderRecordViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_common_white_radius_bg">
+
+        <View
+            android:id="@+id/split"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:clickable="false"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_order_number"
+            style="@style/item_history_order_record_text_style"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:text="订单编号："
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_order_number_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="5dp"
+            android:text="100000355"
+            android:textColor="@color/default_black_color"
+            app:layout_constraintLeft_toRightOf="@id/tv_order_number"
+            app:layout_constraintRight_toRightOf="@id/split"
+            app:layout_constraintTop_toTopOf="@id/tv_order_number" />
+
+        <TextView
+            android:id="@+id/tv_order_status"
+            style="@style/item_history_order_record_text_style"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:text="订单状态："
+            app:layout_constraintLeft_toLeftOf="@id/tv_order_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_number_value" />
+
+        <TextView
+            android:id="@+id/tv_order_status_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="5dp"
+            android:text="已支付"
+            android:textColor="@color/default_black_color"
+            app:layout_constraintLeft_toRightOf="@id/tv_order_status"
+            app:layout_constraintRight_toRightOf="@id/split"
+            app:layout_constraintTop_toTopOf="@id/tv_order_status" />
+
+        <TextView
+            android:id="@+id/tv_cycling_time"
+            style="@style/item_history_order_record_text_style"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:text="骑行时间："
+            app:layout_constraintLeft_toLeftOf="@id/tv_order_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_status_value" />
+
+        <TextView
+            android:id="@+id/tv_cycling_time_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="5dp"
+            android:text="5分15秒"
+            android:textColor="@color/default_black_color"
+            app:layout_constraintLeft_toRightOf="@id/tv_cycling_time"
+            app:layout_constraintRight_toRightOf="@id/split"
+            app:layout_constraintTop_toTopOf="@id/tv_cycling_time" />
+
+        <TextView
+            android:id="@+id/tv_start_point"
+            style="@style/item_history_order_record_text_style"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:text="起点："
+            app:layout_constraintLeft_toLeftOf="@id/tv_order_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_cycling_time_value" />
+
+        <TextView
+            android:id="@+id/tv_start_point_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:text="青山湖区艾溪湖管理处紫阳大道"
+            android:textColor="@color/default_black_color"
+            app:layout_constraintLeft_toRightOf="@id/tv_start_point"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_start_point" />
+
+        <TextView
+            android:id="@+id/tv_end_point"
+            style="@style/item_history_order_record_text_style"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:text="终点："
+            app:layout_constraintLeft_toLeftOf="@id/tv_order_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_start_point_value" />
+
+        <TextView
+            android:id="@+id/tv_end_point_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:text="青山湖区艾溪湖管理处广阳J区1号楼"
+            android:textColor="@color/default_black_color"
+            app:layout_constraintLeft_toRightOf="@id/tv_end_point"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_end_point" />
+
+        <TextView
+            android:id="@+id/tv_start_time"
+            style="@style/item_history_order_record_text_style"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:text="起始时间："
+            app:layout_constraintLeft_toLeftOf="@id/tv_order_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_end_point_value" />
+
+        <TextView
+            android:id="@+id/tv_start_time_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            android:text="2021-08-10  20:27:20 至 2021-08-10  20:27:20"
+            android:textColor="@color/default_black_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_start_time"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_start_time" />
+
+        <TextView
+            android:id="@+id/tv_user_message"
+            style="@style/item_history_order_record_text_style"
+            android:text="用户信息："
+            android:textColor="#4272EA"
+            app:layout_constraintLeft_toRightOf="@id/split"
+            app:layout_constraintTop_toTopOf="@id/tv_order_number" />
+
+        <TextView
+            android:id="@+id/tv_user_message_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:text="18888888888"
+            android:textColor="#4272EA"
+            app:layout_constraintLeft_toRightOf="@id/tv_user_message"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_user_message" />
+
+        <TextView
+            android:id="@+id/tv_order_amount"
+            style="@style/item_history_order_record_text_style"
+            android:text="订单金额："
+            app:layout_constraintLeft_toRightOf="@id/split"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_message_value"
+            android:layout_marginTop="@dimen/default_vertical_offset"/>
+
+        <TextView
+            android:id="@+id/tv_order_amount_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:text="2元"
+            android:textColor="@color/default_black_color"
+            app:layout_constraintLeft_toRightOf="@id/tv_order_amount"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_order_amount" />
+
+        <TextView
+            android:id="@+id/tv_cycling_distance"
+            style="@style/item_history_order_record_text_style"
+            android:text="骑行距离："
+            app:layout_constraintLeft_toRightOf="@id/split"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_amount_value"
+            android:layout_marginTop="@dimen/default_vertical_offset" />
+
+        <TextView
+            android:id="@+id/tv_cycling_distance_value"
+            style="@style/item_history_order_record_text_style"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:text="1.438 km"
+            android:textColor="@color/default_black_color"
+            app:layout_constraintLeft_toRightOf="@id/tv_cycling_distance"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_cycling_distance" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

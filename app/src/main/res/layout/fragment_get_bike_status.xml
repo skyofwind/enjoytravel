@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.maintenance.GetBikeStatusViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <View
+                android:id="@+id/edit_bg"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_rectangle_blue_border_gray_content_radius_55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_scanner"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:onClick="@{(view) -> viewmodel.gotoScanBikeNumber(view)}"
+                android:src="@drawable/ic_scanner_blue"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toLeftOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <View
+                android:id="@+id/split"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:background="#DBDBDB"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/iv_scanner"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <EditText
+                android:id="@+id/et_bike_number"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入车辆编号"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/default_black_color"
+                android:textColorHint="#B9B9B9"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/split"
+                app:layout_constraintRight_toRightOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.amap.api.maps.TextureMapView
+            android:id="@+id/mapView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/space"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_search" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_bottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bike_detail_bottom_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="@dimen/default_vertical_offset"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:background="@drawable/shape_common_white_radius_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Space
+                    android:id="@+id/one"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="30dp"
+                    app:layout_constraintEnd_toStartOf="@id/two"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Space
+                    android:id="@+id/two"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="30dp"
+                    app:layout_constraintEnd_toStartOf="@id/three"
+                    app:layout_constraintStart_toEndOf="@id/one"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Space
+                    android:id="@+id/three"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/two"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--第一行-->
+                <TextView
+                    android:id="@+id/tv_signal_strength"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="信号强度"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/one"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_signal_strength_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="21"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/one"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_signal_strength"
+                    app:layout_constraintTop_toTopOf="@id/tv_signal_strength" />
+
+                <TextView
+                    android:id="@+id/tv_fortified_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设防状态"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/two"
+                    app:layout_constraintTop_toTopOf="@id/tv_signal_strength" />
+
+                <TextView
+                    android:id="@+id/tv_fortified_state_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="21"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/two"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_fortified_state"
+                    app:layout_constraintTop_toTopOf="@id/tv_fortified_state" />
+
+                <TextView
+                    android:id="@+id/tv_switch_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电门状态"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/three"
+                    app:layout_constraintTop_toTopOf="@id/tv_signal_strength" />
+
+                <TextView
+                    android:id="@+id/tv_switch_state_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="关"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/three"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_switch_state"
+                    app:layout_constraintTop_toTopOf="@id/tv_switch_state" />
+                <!--第二行-->
+                <TextView
+                    android:id="@+id/tv_automatic_defense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="自动设防"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/one"
+                    app:layout_constraintTop_toBottomOf="@id/tv_signal_strength" />
+
+                <TextView
+                    android:id="@+id/tv_automatic_defense_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="开"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/one"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_automatic_defense"
+                    app:layout_constraintTop_toTopOf="@id/tv_automatic_defense" />
+
+                <TextView
+                    android:id="@+id/tv_battery_voltage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电池电压"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/two"
+                    app:layout_constraintTop_toTopOf="@id/tv_automatic_defense" />
+
+                <TextView
+                    android:id="@+id/tv_battery_voltage_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="48V"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/two"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_battery_voltage"
+                    app:layout_constraintTop_toTopOf="@id/tv_battery_voltage" />
+
+                <TextView
+                    android:id="@+id/tv_rear_seat_lock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="后座锁"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/three"
+                    app:layout_constraintTop_toTopOf="@id/tv_automatic_defense" />
+
+                <TextView
+                    android:id="@+id/tv_rear_seat_lock_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="上锁"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/three"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_rear_seat_lock"
+                    app:layout_constraintTop_toTopOf="@id/tv_rear_seat_lock" />
+                <!--第三行-->
+                <TextView
+                    android:id="@+id/tv_rear_wheel_lock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="后轮锁"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/one"
+                    app:layout_constraintTop_toBottomOf="@id/tv_automatic_defense" />
+
+                <TextView
+                    android:id="@+id/tv_rear_wheel_lock_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="解锁"
+                    android:textColor="#FF2A2A"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/one"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_rear_wheel_lock"
+                    app:layout_constraintTop_toTopOf="@id/tv_rear_wheel_lock" />
+
+                <TextView
+                    android:id="@+id/tv_bike_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车辆状态"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/two"
+                    app:layout_constraintTop_toTopOf="@id/tv_rear_wheel_lock" />
+
+                <TextView
+                    android:id="@+id/tv_bike_status_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="待租"
+                    android:textColor="#1FC76F"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/two"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_bike_status"
+                    app:layout_constraintTop_toTopOf="@id/tv_bike_status" />
+
+                <TextView
+                    android:id="@+id/tv_power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_battery_power"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@id/three"
+                    app:layout_constraintTop_toTopOf="@id/tv_rear_wheel_lock" />
+
+                <TextView
+                    android:id="@+id/tv_power_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="45%"
+                    android:textColor="@color/default_black_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/three"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_power"
+                    app:layout_constraintTop_toTopOf="@id/tv_power" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/get_bike_status_radio_group_bg"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_message">
+
+                <RadioButton
+                    android:id="@+id/rb_unlock"
+                    style="@style/site_edit_radio_style"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/selector_get_bike_status_radio"
+                    android:checked="true"
+                    android:text="开锁" />
+
+                <RadioButton
+                    android:id="@+id/rb_lock"
+                    style="@style/site_edit_radio_style"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/selector_get_bike_status_radio"
+                    android:text="关锁" />
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="@id/cl_bottom"
+            app:layout_constraintTop_toTopOf="@id/cl_bottom" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

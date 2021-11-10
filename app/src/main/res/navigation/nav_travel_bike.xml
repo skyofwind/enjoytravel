@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_travel_bike"
+    app:startDestination="@id/login_fragment_dest">
+    <!--需要action自己写-->
+    <fragment
+        android:id="@+id/login_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.login.LoginFragment"
+        android:label="登录">
+
+    </fragment>
+    <fragment
+        android:id="@+id/home_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.HomeFragment"
+        android:label="首页">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/operation_manager_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.maintenance.OperationManagerFragment"
+        android:label="运维管理">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/operational_statistics_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.OperationalStatisticsFragment"
+        android:label="运营统计">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/personal_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.personal.PersonalFragment"
+        android:label="个人中心">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/scanner_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.scanner.ScannerFragment"
+        android:label="扫一扫">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/input_bike_number_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.scanner.InputBikeNumberFragment"
+        android:label="手动输入车辆号">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/bike_list_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.bikelist.BikeListFragment"
+        android:label="车辆列表">
+
+    </fragment>
+    <fragment
+        android:id="@+id/bike_detail_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.bikelist.BikeDetailFragment"
+        android:label="车辆详情">
+
+    </fragment>
+    <fragment
+        android:id="@+id/history_order_record_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.bikelist.HistoryOrderRecordFragment"
+        android:label="历史订单记录">
+
+    </fragment>
+    <fragment
+        android:id="@+id/move_car_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.movecar.MoveCarFragment"
+        android:label="挪车">
+
+    </fragment>
+    <fragment
+        android:id="@+id/move_car_batch_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.movecar.MoveCarBatchFragment"
+        android:label="批量挪车">
+    </fragment>
+
+    <fragment
+        android:id="@+id/move_car_complete_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.movecar.MoveCarCompleteFragment"
+        android:label="完成挪车">
+
+    </fragment>
+    <fragment
+        android:id="@+id/move_car_single_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.movecar.MoveCarSingleFragment"
+        android:label="单台挪车">
+
+    </fragment>
+    <fragment
+        android:id="@+id/change_battery_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.changebattery.ChangeBatteryFragment"
+        android:label="换电池">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/bike_repair_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.repairworkorder.BikeRepairFragment"
+        android:label="车辆报修">
+
+    </fragment>
+    <fragment
+        android:id="@+id/repair_work_order_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.repairworkorder.RepairWorkOrderFragment"
+        android:label="车辆维修工单列表">
+
+    </fragment>
+    <fragment
+        android:id="@+id/ticket_details_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.repairworkorder.TicketDetailsFragment"
+        android:label="车辆工单详情">
+
+    </fragment>
+    <fragment
+        android:id="@+id/inspection_work_order_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.inspectionworkorder.InspectionWorkOrderFragment"
+        android:label="巡检工单">
+
+    </fragment>
+    <fragment
+        android:id="@+id/inspection_work_order_details_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.inspectionworkorder.InspectionWorkOrderDetailsFragment"
+        android:label="巡检工单详情">
+
+    </fragment>
+    <fragment
+        android:id="@+id/power_threshold_set_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.maintenance.PowerThresholdSetFragment"
+        android:label="换电设定">
+
+    </fragment>
+    <fragment
+        android:id="@+id/bike_detect_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.maintenance.BikeDetectFragment"
+        android:label="车辆检测">
+
+    </fragment>
+    <fragment
+        android:id="@+id/get_bike_status_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.maintenance.GetBikeStatusFragment"
+        android:label="获取车辆状态">
+
+    </fragment>
+    <fragment
+        android:id="@+id/vehicle_box_binding_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.maintenance.VehicleBoxBindingFragment"
+        android:label="车辆盒子绑定">
+
+    </fragment>
+    <fragment
+        android:id="@+id/on_and_off_shelves_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.maintenance.OnAndOffShelvesFragment"
+        android:label="上下架">
+
+    </fragment>
+    <fragment
+        android:id="@+id/parking_lot_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.ParkingLotFragment"
+        android:label="停车区">
+
+    </fragment>
+    <fragment
+        android:id="@+id/order_tracking_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.OrderTrackingFragment"
+        android:label="订单查询">
+
+    </fragment>
+    <fragment
+        android:id="@+id/power_exchange_statistics_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.PowerExchangeStatisticsFragment"
+        android:label="换电统计">
+
+    </fragment>
+    <fragment
+        android:id="@+id/moving_statistics_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.MovingStatisticsFragment"
+        android:label="挪车统计">
+
+    </fragment>
+    <fragment
+        android:id="@+id/maintenances_statistics_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.MaintenanceStatisticsFragment"
+        android:label="维修统计">
+
+    </fragment>
+    <fragment
+        android:id="@+id/inspection_statistics_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.InspectionStatisticsFragment"
+        android:label="巡检统计">
+
+    </fragment>
+    <fragment
+        android:id="@+id/message_center_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.personal.MessageCenterFragment"
+        android:label="消息中心">
+
+    </fragment>
+    <fragment
+        android:id="@+id/about_us_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.personal.AboutUsFragment"
+        android:label="关于我们">
+
+    </fragment>
+    <fragment
+        android:id="@+id/site_add_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.SiteAddFragment"
+        android:label="新增站点">
+
+    </fragment>
+    <fragment
+        android:id="@+id/site_edit_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.SiteEditFragment"
+        android:label="添加站点">
+
+    </fragment>
+    <fragment
+        android:id="@+id/order_bike_detail_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.operation.OrderBikeDetailFragment"
+        android:label="车辆详情">
+
+    </fragment>
+    <fragment
+        android:id="@+id/service_select_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.home.ServiceSelectFragment"
+        android:label="选择服务区">
+
+    </fragment>
+    <fragment
+        android:id="@+id/common_scanner_fragment_dest"
+        android:name="com.huishan.enjoytravel.ui.CommonScannerFragment"
+        android:label="通用扫码">
+
+    </fragment>
+
+</navigation>

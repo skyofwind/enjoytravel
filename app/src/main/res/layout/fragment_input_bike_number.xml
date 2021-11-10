@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.scanner.InputBikeNumberViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray_color"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:background="@drawable/shape_common_white_radius_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <TextView
+                android:id="@+id/tv_tip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_horizontal_offset"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="@dimen/default_horizontal_offset"
+                android:text="请确保车辆编号(N 位)输入正确，以免启动其他车辆"
+                android:textColor="#4B4B4B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.huishan.enjoytravel.widget.splitedittext.SplitEditTextView
+                android:id="@+id/et_bike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:inputType="number"
+                android:text="@={viewmodel.bikeNumber}"
+                android:textColor="@color/default_black_color"
+                android:textSize="16sp"
+                app:borderSize="0dp"
+                app:boxColor="#F5F5F5"
+                app:contentNumber="9"
+                app:contentShowMode="text"
+                app:corner_size="10dp"
+                app:cursorColor="@color/default_black_color"
+                app:cursorWidth="2dp"
+                app:inputBoxSquare="true"
+                app:inputBoxStyle="singleBox"
+                app:isBoxFill="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_tip"
+                app:spaceSize="5dp" />
+
+            <Button
+                android:id="@+id/bt_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_rectangle_blue_content_radius_20dp"
+                android:onClick="@{() -> viewmodel.onConfirm()}"
+                android:text="确认"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="@id/et_bike"
+                app:layout_constraintRight_toRightOf="@id/et_bike"
+                app:layout_constraintTop_toBottomOf="@id/et_bike" />
+
+            <LinearLayout
+                android:id="@+id/ll_bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="40dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bt_confirm">
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="14.4dp"
+                    android:src="@drawable/ic_bluetooth" />
+
+                <TextView
+                    android:id="@+id/tv_bluetooth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="请开启蓝牙"
+                    android:textColor="#8F8F8F"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

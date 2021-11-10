@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.huishan.enjoytravel.data.remote.entity.ItemPowerThresholdSetEntity" />
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.maintenance.PowerThresholdSetViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_common_white_radius_bg">
+
+        <TextView
+            android:id="@+id/tv_current_service_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="当前服务区："
+            android:textColor="#8F8F8F"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_current_service_area_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="深圳服务区"
+            android:textColor="@color/default_black_color"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toRightOf="@id/tv_current_service_area"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_current_service_area" />
+
+        <TextView
+            android:id="@+id/tv_power_threshold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="当前设定换电阈值："
+            android:textColor="#8F8F8F"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_current_service_area"
+            app:layout_constraintTop_toBottomOf="@id/tv_current_service_area_value" />
+
+        <TextView
+            android:id="@+id/tv_power_threshold_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="40%"
+            android:textColor="@color/default_black_color"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toRightOf="@id/tv_power_threshold"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_power_threshold" />
+
+        <View
+            android:id="@+id/progress_bg"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/progress_bar_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_power_threshold_value" />
+
+        <TextView
+            android:id="@+id/tv_battery_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:text="40%"
+            android:textColor="#4272EA"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/progress_bg"
+            app:layout_constraintRight_toRightOf="@id/progress_bg"
+            app:layout_constraintTop_toTopOf="@id/progress_bg" />
+        <SeekBar
+            android:id="@+id/progress_battery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="10dp"
+            android:duplicateParentState="true"
+            android:max="100"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingEnd="0dp"
+            android:paddingRight="0dp"
+            android:progress="20"
+            android:onProgressChanged='@{(seekbar, progress, from) -> viewmodel.onSeekBarChange(seekbar, progress, from, item)}'
+            android:progressDrawable="@drawable/seekbar_progress_drawable"
+            android:thumb="@drawable/seekbar_thumb"
+            android:thumbOffset="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/progress_bg"
+            app:layout_constraintLeft_toLeftOf="@id/progress_bg"
+            app:layout_constraintRight_toLeftOf="@id/tv_battery_percentage"
+            app:layout_constraintTop_toTopOf="@id/progress_bg" />
+        <!--android:onProgressChanged="@{(seekbar, progress, fromUser) -> viewmodel.seekBarChange(progress, item)}"-->
+
+        <ImageView
+            android:id="@+id/iv_warm"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/ic_warm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/progress_bg"
+            app:layout_constraintTop_toBottomOf="@id/progress_bg" />
+
+        <TextView
+            android:id="@+id/tv_warm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="高于设定值无法进行换电"
+            android:textColor="#8F8F8F"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_warm"
+            app:layout_constraintLeft_toRightOf="@id/iv_warm"
+            app:layout_constraintTop_toTopOf="@id/iv_warm" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.movecar.MoveCarSingleViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <View
+                android:id="@+id/edit_bg"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_rectangle_blue_border_gray_content_radius_55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_scanner"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:onClick="@{(view) -> viewmodel.gotoScanner(view)}"
+                android:src="@drawable/ic_scanner_blue"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toLeftOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <View
+                android:id="@+id/split"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:background="#DBDBDB"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/iv_scanner"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <EditText
+                android:id="@+id/et_bike_number"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入车辆编号"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/default_black_color"
+                android:textColorHint="#B9B9B9"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/split"
+                app:layout_constraintRight_toRightOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/background_gray_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_search">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_bike_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:background="@drawable/shape_common_white_radius_bg"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_bike_message"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="@dimen/default_horizontal_offset"
+                        android:background="@drawable/shape_card_type_bike_message"
+                        android:gravity="center"
+                        android:text="车辆信息"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_current_bike_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="车辆状态："
+                        android:textColor="#B9B9B9"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_bike_message"
+                        app:layout_constraintTop_toBottomOf="@id/tv_bike_message" />
+
+                    <TextView
+                        android:id="@+id/tv_current_bike_status_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="站点外"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toRightOf="@id/tv_current_bike_status"
+                        app:layout_constraintTop_toTopOf="@id/tv_current_bike_status" />
+
+                    <TextView
+                        android:id="@+id/tv_current_power"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="当前电量："
+                        android:textColor="#B9B9B9"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_current_bike_status"
+                        app:layout_constraintTop_toBottomOf="@id/tv_current_bike_status" />
+
+                    <TextView
+                        android:id="@+id/tv_current_power_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="38%"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toRightOf="@id/tv_current_power"
+                        app:layout_constraintTop_toTopOf="@id/tv_current_power" />
+
+                    <TextView
+                        android:id="@+id/tv_current_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="当前位置："
+                        android:textColor="#B9B9B9"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_current_power"
+                        app:layout_constraintTop_toBottomOf="@id/tv_current_power" />
+
+                    <TextView
+                        android:id="@+id/tv_current_location_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="南昌县昌东镇瑶湖西五路"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toRightOf="@id/tv_current_location"
+                        app:layout_constraintTop_toTopOf="@id/tv_current_location" />
+
+                    <ImageView
+                        android:id="@+id/iv_refresh"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:src="@drawable/ic_refresh"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_current_location_value"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintLeft_toRightOf="@id/tv_current_location_value"
+                        app:layout_constraintRight_toRightOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_location"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/switch_map_checked"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_bike_message"
+                        app:layout_constraintTop_toBottomOf="@id/tv_current_location_value" />
+
+                    <TextView
+                        android:id="@+id/tv_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="查看地图"
+                        android:textColor="#4272EA"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_location"
+                        app:layout_constraintLeft_toRightOf="@id/iv_location"
+                        app:layout_constraintTop_toTopOf="@id/iv_location" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_photo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/shape_common_white_radius_bg"
+                    app:layout_constraintLeft_toLeftOf="@id/cl_bike_message"
+                    app:layout_constraintRight_toRightOf="@id/cl_bike_message"
+                    app:layout_constraintTop_toBottomOf="@id/cl_bike_message">
+
+                    <View
+                        android:id="@+id/photo_bg"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="@dimen/default_horizontal_offset"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/photo_border"
+                        android:onClick="@{(view) -> viewmodel.gotoPhoto(view)}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_camera"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:onClick="@{(view) -> viewmodel.gotoPhoto(view)}"
+                        android:src="@drawable/ic_camera"
+                        app:layout_constraintBottom_toBottomOf="@id/photo_bg"
+                        app:layout_constraintLeft_toLeftOf="@id/photo_bg"
+                        app:layout_constraintRight_toRightOf="@id/photo_bg"
+                        app:layout_constraintTop_toTopOf="@id/photo_bg" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:layout_marginBottom="5dp"
+                        android:text="请上传挪车前图片（非必填）"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/photo_bg" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_control"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/default_vertical_offset"
+                    android:background="@drawable/shape_common_white_radius_bg"
+                    app:layout_constraintLeft_toLeftOf="@id/cl_bike_message"
+                    app:layout_constraintRight_toRightOf="@id/cl_bike_message"
+                    app:layout_constraintTop_toBottomOf="@id/cl_photo">
+
+                    <View
+                        android:id="@+id/center"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        android:clickable="false"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_start"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/shape_rectangle_gray_content_radius_10dp_dark"
+                        android:gravity="center"
+                        android:text="启动"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/center"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_push_bike"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+                        android:gravity="center"
+                        android:text="推车"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintLeft_toRightOf="@id/center"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_start" />
+
+                    <TextView
+                        android:id="@+id/tv_lock"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+                        android:gravity="center"
+                        android:text="锁车"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_start"
+                        app:layout_constraintRight_toRightOf="@id/tv_start"
+                        app:layout_constraintTop_toBottomOf="@id/tv_start" />
+
+                    <TextView
+                        android:id="@+id/tv_complete"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+                        android:gravity="center"
+                        android:text="完成"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_push_bike"
+                        app:layout_constraintRight_toRightOf="@id/tv_push_bike"
+                        app:layout_constraintTop_toBottomOf="@id/tv_push_bike" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

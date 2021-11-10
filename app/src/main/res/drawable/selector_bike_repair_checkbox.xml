@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true" android:drawable="@drawable/shape_rectangle_green_content_radius_26dp"/>
+    <item android:state_checked="false" android:drawable="@drawable/shape_rectangle_gray_content_radius_26dp"/>
+    <item android:drawable="@drawable/shape_rectangle_gray_content_radius_26dp"/>
+</selector>

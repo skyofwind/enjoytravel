@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.maintenance.VehicleBoxBindingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_bike_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <View
+                android:id="@+id/edit_bg"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_rectangle_blue_border_gray_content_radius_55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_scanner"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:src="@drawable/ic_scanner_blue"
+                android:onClick="@{(view) -> viewmodel.gotoScanBikeNumber(view)}"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toLeftOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <View
+                android:id="@+id/split"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:background="#DBDBDB"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/iv_scanner"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <EditText
+                android:id="@+id/et_bike_number"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入车辆编号"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/default_black_color"
+                android:textColorHint="#B9B9B9"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/split"
+                app:layout_constraintRight_toRightOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/split2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#fff5f5f5"
+            app:layout_constraintLeft_toLeftOf="@id/cl_bike_number"
+            app:layout_constraintRight_toRightOf="@id/cl_bike_number"
+            app:layout_constraintTop_toBottomOf="@id/cl_bike_number" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_box_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/split2">
+
+            <View
+                android:id="@+id/edit_box_number_bg"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_rectangle_blue_border_gray_content_radius_55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_box_number_scanner"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:src="@drawable/ic_scanner_blue"
+                android:onClick="@{(view) -> viewmodel.gotoScanBoxNumber(view)}"
+                app:layout_constraintBottom_toBottomOf="@id/edit_box_number_bg"
+                app:layout_constraintLeft_toLeftOf="@id/edit_box_number_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_box_number_bg" />
+
+            <View
+                android:id="@+id/box_number_split"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:background="#DBDBDB"
+                app:layout_constraintBottom_toBottomOf="@id/edit_box_number_bg"
+                app:layout_constraintLeft_toRightOf="@id/iv_box_number_scanner"
+                app:layout_constraintTop_toTopOf="@id/edit_box_number_bg" />
+
+            <EditText
+                android:id="@+id/et_box_number"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入盒子编码"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/default_black_color"
+                android:textColorHint="#B9B9B9"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/edit_box_number_bg"
+                app:layout_constraintLeft_toRightOf="@id/box_number_split"
+                app:layout_constraintRight_toRightOf="@id/edit_box_number_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_box_number_bg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="20dp"
+            android:text="注：车辆需先与旧盒子解绑后才能跟新盒子绑定"
+            android:textColor="#8F8F8F"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_box_number" />
+
+        <Button
+            android:id="@+id/bt_unbind"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_rectangle_gray_border_gray_content_radius_10dp"
+            android:gravity="center"
+            android:text="解绑"
+            android:textColor="#4272EA"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/bt_bind"
+            app:layout_constraintTop_toBottomOf="@id/tv_tip" />
+
+        <Button
+            android:id="@+id/bt_bind"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="35dp"
+            android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+            android:gravity="center"
+            android:text="绑定"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@id/bt_unbind"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_tip" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

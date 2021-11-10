@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.HomeViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/iv_bike_status"
+            android:layout_width="22dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:src="@drawable/ic_orange_one"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_device_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="车辆状态"
+            android:textColor="@color/default_black_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_bike_status"
+            app:layout_constraintLeft_toRightOf="@id/iv_bike_status"
+            app:layout_constraintTop_toTopOf="@id/iv_bike_status" />
+
+        <View
+            android:id="@+id/split1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:background="#F5F5F5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_device_id" />
+
+        <Button
+            android:id="@+id/bt_reset"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            android:background="@drawable/shape_rectangle_gray_border_white_content_radius_40dp"
+            android:gravity="center"
+            android:text="重置"
+            android:textColor="@color/default_black_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/bt_confirm"
+            android:onClick="@{() -> viewmodel.bikeStatusOnReset()}"
+            />
+
+        <Button
+            android:id="@+id/bt_confirm"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            android:background="@drawable/shape_rectangle_blue_content_radius_40dp"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/bt_reset"
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="@{() -> viewmodel.bikeStatusConfirm()}"
+            />
+
+        <View
+            android:id="@+id/split2"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            android:background="#F5F5F5"
+            app:layout_constraintBottom_toTopOf="@id/bt_reset"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <CheckBox
+            android:id="@+id/cb_filter_cycling"
+            style="@style/car_type_item_style"
+            android:layout_marginBottom="25dp"
+            android:text="过滤骑行中的车辆"
+            app:layout_constraintBottom_toTopOf="@id/split2"
+            android:onCheckedChanged="@{(cb, isChecked) -> viewmodel.filerCyclingChange(isChecked)}"
+            app:layout_constraintLeft_toLeftOf="@id/iv_bike_status" />
+
+        <View
+            android:id="@+id/split3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="#F5F5F5"
+            app:layout_constraintBottom_toTopOf="@id/cb_filter_cycling"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_other_filter"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            android:src="@drawable/ic_orange_three"
+            app:layout_constraintBottom_toTopOf="@id/split3"
+            app:layout_constraintLeft_toLeftOf="@id/iv_bike_status" />
+
+        <TextView
+            android:id="@+id/tv_other_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他筛选"
+            android:textColor="@color/default_black_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_other_filter"
+            app:layout_constraintLeft_toLeftOf="@id/tv_device_id"
+            app:layout_constraintTop_toTopOf="@id/iv_other_filter" />
+
+        <EditText
+            android:id="@+id/et_start_number"
+            style="@style/pop_bike_status_edit_style"
+            android:layout_marginBottom="25dp"
+            android:hint="开始号段"
+            app:layout_constraintBottom_toTopOf="@id/tv_other_filter"
+            app:layout_constraintLeft_toLeftOf="@id/iv_bike_status" />
+
+        <TextView
+            android:id="@+id/tv_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="至"
+            android:textColor="@color/default_black_color"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/et_start_number"
+            app:layout_constraintLeft_toRightOf="@id/et_start_number"
+            app:layout_constraintTop_toTopOf="@id/et_start_number" />
+
+        <EditText
+            android:id="@+id/et_end_number"
+            style="@style/pop_bike_status_edit_style"
+            android:layout_marginStart="10dp"
+            android:hint="结束号段"
+            app:layout_constraintBottom_toBottomOf="@id/et_start_number"
+            app:layout_constraintLeft_toRightOf="@id/tv_link"
+            app:layout_constraintTop_toTopOf="@id/et_start_number" />
+
+        <View
+            android:id="@+id/split4"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="#F5F5F5"
+            app:layout_constraintBottom_toTopOf="@id/et_start_number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_number_segment_screening"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            android:src="@drawable/ic_orange_two"
+            app:layout_constraintBottom_toTopOf="@id/split4"
+            app:layout_constraintLeft_toLeftOf="@id/iv_bike_status" />
+
+        <TextView
+            android:id="@+id/tv_number_segment_screening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="号段筛选"
+            android:textColor="@color/default_black_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_number_segment_screening"
+            app:layout_constraintLeft_toLeftOf="@id/tv_device_id"
+            app:layout_constraintTop_toTopOf="@id/iv_number_segment_screening" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@id/iv_number_segment_screening"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/split1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

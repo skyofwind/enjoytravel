@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.movecar.MoveCarBatchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray_color"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_head"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <TextView
+                android:id="@+id/tv_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="@dimen/default_vertical_offset"
+                android:background="@drawable/shape_move_car_complete_label"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="非必填项"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_collaborator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_vertical_offset"
+                android:text="协作者："
+                android:textColor="@color/default_black_color"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_label" />
+
+            <ImageView
+                android:id="@+id/iv_add"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:src="@drawable/ic_plus"
+                app:layout_constraintBottom_toBottomOf="@id/tv_collaborator"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_collaborator" />
+
+            <EditText
+                android:id="@+id/et_collaborator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@null"
+                android:hint="请输入协作者"
+                android:textColor="@color/default_black_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_collaborator"
+                app:layout_constraintLeft_toRightOf="@id/tv_collaborator"
+                app:layout_constraintRight_toLeftOf="@id/iv_add"
+                app:layout_constraintTop_toTopOf="@id/tv_collaborator" />
+
+            <View
+                android:id="@+id/split"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/background_gray_color"
+                app:layout_constraintLeft_toLeftOf="@id/tv_collaborator"
+                app:layout_constraintRight_toRightOf="@id/iv_add"
+                app:layout_constraintTop_toBottomOf="@id/tv_collaborator" />
+
+            <TextView
+                android:id="@+id/tv_photo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_vertical_offset"
+                android:text="请上传挪车后图片："
+                android:textColor="@color/default_black_color"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/split"
+                app:layout_constraintTop_toBottomOf="@id/split" />
+
+            <View
+                android:id="@+id/photo_bg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/default_vertical_offset"
+                android:layout_marginBottom="@dimen/default_vertical_offset"
+                android:background="@drawable/photo_border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/tv_photo_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_photo_title" />
+
+            <ImageView
+                android:id="@+id/iv_camera"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_camera"
+                app:layout_constraintBottom_toBottomOf="@id/photo_bg"
+                app:layout_constraintLeft_toLeftOf="@id/photo_bg"
+                app:layout_constraintRight_toRightOf="@id/photo_bg"
+                app:layout_constraintTop_toTopOf="@id/photo_bg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/bt_confirm"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            android:background="@drawable/shape_common_white_radius_bg"
+            app:layout_constraintBottom_toTopOf="@id/bt_confirm"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_head"
+            app:layout_constraintVertical_bias="0">
+
+            <TextView
+                android:id="@+id/tv_move_bike_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="@dimen/default_vertical_offset"
+                android:text="挪车数：3"
+                android:textColor="#1FC76F"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="18dp"
+                android:layout_height="0dp"
+                android:background="#1FC76F"
+                app:layout_constraintBottom_toBottomOf="@id/tv_move_bike_total"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_move_bike_total" />
+
+            <TextView
+                android:id="@+id/tv_lock_bike_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:text="已锁车数：0"
+                android:textColor="#1FC76F"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintLeft_toRightOf="@id/tv_move_bike_total"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_move_bike_total" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_move_bike_total" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

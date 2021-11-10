@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.movecar.MoveCarBatchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:focusable="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/edit_bg"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_rectangle_blue_border_gray_content_radius_55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--<TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:text="确定"
+                android:textColor="#4272EA"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintRight_toRightOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <View
+                android:id="@+id/split"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="7dp"
+                android:background="#DBDBDB"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintRight_toLeftOf="@id/tv_confirm"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />-->
+
+            <EditText
+                android:id="@+id/et_bike_number"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:afterTextChanged="@{(s) -> viewmodel.onAfterTextChange(s)}"
+                android:hint="请输入车辆编号"
+                android:inputType="text"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:textColor="@color/default_black_color"
+                android:textColorHint="#B9B9B9"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toLeftOf="@id/edit_bg"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <View
+                android:id="@+id/split2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/background_gray_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            layout="@layout/item_move_car_head"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:minHeight="45dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_search" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            app:layout_constraintBottom_toTopOf="@id/bt_confirm"
+            app:layout_constraintLeft_toLeftOf="@id/cl_head"
+            app:layout_constraintRight_toRightOf="@id/cl_head"
+            app:layout_constraintTop_toBottomOf="@id/cl_head" />
+
+        <Button
+            android:id="@+id/bt_confirm"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@drawable/shape_rectangle_blue_content_radius_10dp"
+            android:text="完成挪车"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="@{(view) -> viewmodel.onComplete(view)}"
+            android:layout_marginBottom="20dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

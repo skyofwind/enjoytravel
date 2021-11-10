@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.huishan.enjoytravel.data.remote.entity.ItemBikeListEntity" />
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.bikelist.BikeListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_common_white_radius_bg"
+        android:onClick="@{(view) -> viewmodel.gotoBikeDetail(view, item)}"
+        >
+
+        <TextView
+            android:id="@+id/tv_bike_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:layout_marginTop="20dp"
+            android:text="车辆编号："
+            android:textColor="@color/default_black_color"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_bike_number_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.bikeNumber}"
+            android:textColor="@color/default_black_color"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_bike_number"
+            app:layout_constraintTop_toTopOf="@id/tv_bike_number" />
+
+        <TextView
+            android:id="@+id/tv_current_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="当前状态："
+            android:textColor="@color/default_black_color"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_bike_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_bike_number" />
+
+        <TextView
+            android:id="@+id/tv_current_status_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.currentType}"
+            android:textColor="@color/default_black_color"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_current_status"
+            app:layout_constraintTop_toTopOf="@id/tv_current_status" />
+
+        <TextView
+            android:id="@+id/tv_ticket_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="当前电量："
+            android:textColor="@color/default_black_color"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/tv_bike_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_current_status" />
+        <TextView
+            android:id="@+id/tv_battery_power_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.currentPower}"
+            android:textColor="#E27211"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_ticket_status"
+            app:layout_constraintTop_toTopOf="@id/tv_ticket_status" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

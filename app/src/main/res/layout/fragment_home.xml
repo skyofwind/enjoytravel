@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.widget.CompoundButton" />
+
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <com.amap.api.maps.TextureMapView
+            android:id="@+id/mapView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bottom_bar_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+
+            <ImageView
+                android:id="@+id/iv_scanner"
+                style="@style/home_bottom_bar_image_style"
+                android:layout_marginTop="10dp"
+                android:onClick="@{(view) -> viewmodel.gotoScanner(view)}"
+                android:src="@drawable/ic_scanner"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/iv_move_car"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_scanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="12dp"
+                android:onClick="@{(view) -> viewmodel.gotoScanner(view)}"
+                android:text="@string/text_scan_it"
+                android:textColor="@color/default_black_color"
+                android:textSize="@dimen/icon_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/iv_scanner"
+                app:layout_constraintRight_toRightOf="@id/iv_scanner"
+                app:layout_constraintTop_toBottomOf="@id/iv_scanner" />
+
+
+            <ImageView
+                android:id="@+id/iv_move_car"
+                style="@style/home_bottom_bar_image_style"
+                android:onClick="@{(view) -> viewmodel.gotoMoveCar(view)}"
+                android:src="@drawable/ic_move_car"
+                app:layout_constraintLeft_toRightOf="@id/iv_scanner"
+                app:layout_constraintRight_toLeftOf="@id/iv_change_battery"
+                app:layout_constraintTop_toTopOf="@id/iv_scanner" />
+
+
+            <TextView
+                android:id="@+id/tv_move_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> viewmodel.gotoMoveCar(view)}"
+                android:text="@string/text_move_the_car"
+                android:textColor="@color/default_black_color"
+                android:textSize="@dimen/icon_text_size"
+                app:layout_constraintLeft_toLeftOf="@id/iv_move_car"
+                app:layout_constraintRight_toRightOf="@id/iv_move_car"
+                app:layout_constraintTop_toTopOf="@id/tv_scanner" />
+
+
+            <ImageView
+                android:id="@+id/iv_change_battery"
+                style="@style/home_bottom_bar_image_style"
+                android:onClick="@{(view) -> viewmodel.gotoChangeBattery(view)}"
+                android:src="@drawable/ic_change_battery"
+                app:layout_constraintLeft_toRightOf="@id/iv_move_car"
+                app:layout_constraintRight_toLeftOf="@id/iv_repair_work_order"
+                app:layout_constraintTop_toTopOf="@id/iv_scanner" />
+
+
+            <TextView
+                android:id="@+id/tv_none"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> viewmodel.gotoChangeBattery(view)}"
+                android:text="@string/text_change_the_battery"
+                android:textColor="@color/default_black_color"
+                android:textSize="@dimen/icon_text_size"
+                app:layout_constraintLeft_toLeftOf="@id/iv_change_battery"
+                app:layout_constraintRight_toRightOf="@id/iv_change_battery"
+                app:layout_constraintTop_toTopOf="@id/tv_scanner" />
+
+
+            <ImageView
+                android:id="@+id/iv_repair_work_order"
+                style="@style/home_bottom_bar_image_style"
+                android:onClick="@{(view) -> viewmodel.gotoRepairWorkOrder(view)}"
+                android:src="@drawable/ic_repair_work_order"
+                app:layout_constraintLeft_toRightOf="@id/iv_change_battery"
+                app:layout_constraintRight_toLeftOf="@id/iv_inspection_work_order"
+                app:layout_constraintTop_toTopOf="@id/iv_scanner" />
+
+
+            <TextView
+                android:id="@+id/tv_repair_work_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> viewmodel.gotoRepairWorkOrder(view)}"
+                android:text="@string/text_repair_work_order"
+                android:textColor="@color/default_black_color"
+                android:textSize="@dimen/icon_text_size"
+                app:layout_constraintLeft_toLeftOf="@id/iv_repair_work_order"
+                app:layout_constraintRight_toRightOf="@id/iv_repair_work_order"
+                app:layout_constraintTop_toTopOf="@id/tv_scanner" />
+
+
+            <ImageView
+                android:id="@+id/iv_inspection_work_order"
+                style="@style/home_bottom_bar_image_style"
+                android:onClick="@{(view) -> viewmodel.gotoInspectionWorkOrder(view)}"
+                android:src="@drawable/ic_inspection_work_order"
+                app:layout_constraintLeft_toRightOf="@id/iv_repair_work_order"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_scanner" />
+
+
+            <TextView
+                android:id="@+id/tv_inspection_work_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> viewmodel.gotoInspectionWorkOrder(view)}"
+                android:text="@string/text_inspection_work_order"
+                android:textColor="@color/default_black_color"
+                android:textSize="@dimen/icon_text_size"
+                app:layout_constraintLeft_toLeftOf="@id/iv_inspection_work_order"
+                app:layout_constraintRight_toRightOf="@id/iv_inspection_work_order"
+                app:layout_constraintTop_toTopOf="@id/tv_scanner" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#F5F5F5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tools_bar"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/tools_bar_bg"
+            app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <CheckBox
+                android:id="@+id/cb_filter_battery"
+                style="@style/filter_battery_checkbox"
+                android:layout_width="32dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="10dp"
+                android:checked="false"
+                android:onCheckedChanged="@{(cb, isChecked) -> viewmodel.filterBatteryChange(isChecked)}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/cb_switch_map"
+                style="@style/filter_switch_map_checkbox"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="5dp"
+                android:checked="false"
+                android:onCheckedChanged="@{(cb, isChecked) -> viewmodel.switchMapChange(isChecked)}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cb_filter_battery" />
+
+            <CheckBox
+                android:id="@+id/cb_car_capacity"
+                style="@style/filter_car_capacity_checkbox"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="5dp"
+                android:checked="false"
+                android:onCheckedChanged="@{(cb, isChecked) -> viewmodel.carCapacityChange(isChecked)}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cb_switch_map" />
+
+            <CheckBox
+                android:id="@+id/cb_location_reset"
+                style="@style/filter_location_reset_checkbox"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:checked="false"
+                android:onCheckedChanged="@{(cb, isChecked) -> viewmodel.locationResetChange(isChecked)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cb_car_capacity" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bike_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/shape_bike_box_bg"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_bike"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:src="@drawable/bike_black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_car_number_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="100"
+                android:textColor="@color/default_black_color"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_car_number"
+                app:layout_constraintLeft_toRightOf="@id/iv_bike"
+                app:layout_constraintRight_toRightOf="@id/tv_car_number"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_car_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="车辆数"
+                android:textColor="@color/default_black_color"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/iv_bike"
+                app:layout_constraintTop_toBottomOf="@id/tv_car_number_value" />
+
+            <TextView
+                android:id="@+id/tv_cycling_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="@color/main_menu_text_active"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_cycling"
+                app:layout_constraintLeft_toRightOf="@id/tv_car_number_value"
+                app:layout_constraintRight_toRightOf="@id/tv_cycling"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_cycling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="骑行中"
+                android:textColor="@color/main_menu_text_active"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/tv_car_number"
+                app:layout_constraintTop_toBottomOf="@id/tv_cycling_value" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/battery_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/battery_seekbar_bg"
+            android:visibility="gone"
+            app:layout_constraintLeft_toRightOf="@id/tools_bar"
+            app:layout_constraintTop_toTopOf="@id/tools_bar"
+            app:layout_constraintWidth_percent="0.65">
+
+            <TextView
+                android:id="@+id/tv_battery_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:text='@{viewmodel.batteryPercentage + @string/value_battery_percentage}'
+                android:textColor="#4272EA"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/progress_battery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:duplicateParentState="true"
+                android:max="100"
+                android:maxHeight="2dp"
+                android:minHeight="2dp"
+                android:onProgressChanged="@{(seekbar, progress, fromUser) -> viewmodel.seekBarChange(progress)}"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:progress="@{viewmodel.batteryPercentage}"
+                android:progressDrawable="@drawable/seekbar_progress_drawable"
+                android:thumb="@drawable/seekbar_thumb"
+                android:thumbOffset="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv_battery_percentage"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

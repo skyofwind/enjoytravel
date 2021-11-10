@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.operation.InspectionStatisticsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray_color"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_head"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <EditText
+                android:id="@+id/et_bike_number"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:afterTextChanged="@{(s) -> viewmodel.onBikeNumberChange(s)}"
+                android:background="@drawable/shape_rectangle_gray_content_radius_20dp"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_input_bike_number"
+                android:inputType="number"
+                android:paddingStart="45dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/default_black_color"
+                android:textColorHint="#8F8F8F"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="@id/et_bike_number"
+                app:layout_constraintLeft_toLeftOf="@id/et_bike_number"
+                app:layout_constraintTop_toTopOf="@id/et_bike_number" />
+
+
+            <TextView
+                android:id="@+id/tv_service_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="@{() -> viewmodel.onAllServiceClick()}"
+                android:text="服务区"
+                android:textColor="@color/default_black_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/et_bike_number"
+                app:layout_constraintTop_toBottomOf="@id/et_bike_number" />
+
+            <ImageView
+                android:id="@+id/iv_service_area"
+                android:layout_width="12dp"
+                android:layout_height="7.5dp"
+                android:layout_marginStart="3dp"
+                android:onClick="@{() -> viewmodel.onAllServiceClick()}"
+                android:src="@{viewmodel.allServiceType ?@drawable/ic_gray_triangle_up :@drawable/ic_gray_triangle_down}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_service_area"
+                app:layout_constraintLeft_toRightOf="@id/tv_service_area"
+                app:layout_constraintTop_toTopOf="@id/tv_service_area" />
+
+            <TextView
+                android:id="@+id/tv_maintenance_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:onClick="@{() -> viewmodel.onAllOperationClick()}"
+                android:text="运维类型"
+                android:textColor="@color/default_black_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_service_area"
+                app:layout_constraintLeft_toRightOf="@id/iv_service_area"
+                app:layout_constraintTop_toTopOf="@id/tv_service_area" />
+
+            <ImageView
+                android:id="@+id/iv_maintenance_type"
+                android:layout_width="12dp"
+                android:layout_height="7.5dp"
+                android:layout_marginStart="3dp"
+                android:onClick="@{() -> viewmodel.onAllOperationClick()}"
+                android:src="@{viewmodel.allOperationType ?@drawable/ic_gray_triangle_up :@drawable/ic_gray_triangle_down}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_maintenance_type"
+                app:layout_constraintLeft_toRightOf="@id/tv_maintenance_type"
+                app:layout_constraintTop_toTopOf="@id/tv_maintenance_type" />
+
+            <TextView
+                android:id="@+id/tv_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="开始日期"
+                android:textColor="@color/default_black_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_maintenance_type"
+                app:layout_constraintLeft_toRightOf="@id/iv_maintenance_type"
+                app:layout_constraintTop_toTopOf="@id/tv_maintenance_type" />
+
+            <TextView
+                android:id="@+id/iv_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="-"
+                app:layout_constraintBottom_toBottomOf="@id/tv_start_date"
+                app:layout_constraintLeft_toRightOf="@id/tv_start_date"
+                app:layout_constraintTop_toTopOf="@id/tv_start_date" />
+
+            <TextView
+                android:id="@+id/tv_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="结束日期"
+                android:textColor="@color/default_black_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_start_date"
+                app:layout_constraintLeft_toRightOf="@id/iv_distance"
+                app:layout_constraintTop_toTopOf="@id/tv_start_date" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/bottom_bg"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="#ee4272EA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_inspection_statistics"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:src="@drawable/ic_inspection_statistics_white"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_bg"
+            app:layout_constraintStart_toStartOf="@id/bottom_bg"
+            app:layout_constraintTop_toTopOf="@id/bottom_bg" />
+
+        <TextView
+            android:id="@+id/tv_number_of_repair_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="巡检单数：20"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_bg"
+            app:layout_constraintStart_toEndOf="@id/iv_inspection_statistics"
+            app:layout_constraintTop_toTopOf="@id/bottom_bg" />
+
+        <TextView
+            android:id="@+id/tv_processing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="处理中：5"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_bg"
+            app:layout_constraintStart_toEndOf="@id/tv_number_of_repair_orders"
+            app:layout_constraintTop_toTopOf="@id/bottom_bg" />
+
+        <TextView
+            android:id="@+id/tv_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="已完成：5"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_bg"
+            app:layout_constraintEnd_toEndOf="@id/bottom_bg"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/tv_processing"
+            app:layout_constraintTop_toTopOf="@id/bottom_bg" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/default_horizontal_offset"
+            android:layout_marginTop="@dimen/default_vertical_offset"
+            android:layout_marginEnd="@dimen/default_horizontal_offset"
+            android:layout_marginBottom="@dimen/default_vertical_offset"
+            app:layout_constraintBottom_toTopOf="@id/bottom_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_head" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_type_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="@dimen/default_horizontal_offset"
+            android:paddingTop="@dimen/default_vertical_offset"
+            android:paddingEnd="@dimen/default_horizontal_offset"
+            android:paddingBottom="@dimen/default_vertical_offset"
+            android:visibility="@{viewmodel.typeContentVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_head" />
+
+        <View
+            android:id="@+id/mask"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#55000000"
+            android:onClick="@{() -> viewmodel.onMaskOnClick()}"
+            android:visibility="@{viewmodel.maskVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_type_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

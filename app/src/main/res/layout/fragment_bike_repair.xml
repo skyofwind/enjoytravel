@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.huishan.enjoytravel.ui.home.repairworkorder.BikeRepairViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true">
+
+        <com.huishan.enjoytravel.widget.StatusBarView
+            android:id="@+id/status_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/title_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+            <View
+                android:id="@+id/edit_bg"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="@dimen/default_horizontal_offset"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="@dimen/default_horizontal_offset"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_rectangle_blue_border_gray_content_radius_55dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_scanner"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="25dp"
+                android:src="@drawable/ic_scanner_blue"
+                android:onClick="@{(view) -> viewmodel.gotoScanner(view)}"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toLeftOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <View
+                android:id="@+id/split"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:background="#DBDBDB"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/iv_scanner"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+
+            <EditText
+                android:id="@+id/et_bike_number"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入车辆编号"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/default_black_color"
+                android:textColorHint="#B9B9B9"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/edit_bg"
+                app:layout_constraintLeft_toRightOf="@id/split"
+                app:layout_constraintRight_toRightOf="@id/edit_bg"
+                app:layout_constraintTop_toTopOf="@id/edit_bg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/background_gray_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_search">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_bike_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_horizontal_offset"
+                    android:layout_marginTop="@dimen/default_vertical_offset"
+                    android:layout_marginEnd="@dimen/default_horizontal_offset"
+                    android:background="@drawable/shape_common_white_radius_bg"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_symbol1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_horizontal_offset"
+                        android:layout_marginTop="@dimen/default_vertical_offset"
+                        android:paddingTop="2dp"
+                        android:text="*"
+                        android:textColor="#FF2A2A"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="报修类型"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toRightOf="@id/tv_symbol1"
+                        app:layout_constraintTop_toTopOf="@id/tv_symbol1" />
+
+                    <ImageView
+                        android:id="@+id/iv_bike"
+                        android:layout_width="200dp"
+                        android:layout_height="207dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/bike_describe"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_symbol1" />
+
+                    <CheckBox
+                        android:id="@+id/cb_brake"
+                        style="@style/bike_repair_checkbox_style"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        app:layout_constraintHorizontal_bias="0.7"
+                        android:text="刹车"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/iv_bike"
+                        app:layout_constraintTop_toBottomOf="@id/tv_symbol1" />
+
+                    <CheckBox
+                        android:id="@+id/cb_bike_seat"
+                        style="@style/bike_repair_checkbox_style"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="车座"
+                        app:layout_constraintStart_toStartOf="@id/cb_brake"
+                        app:layout_constraintEnd_toEndOf="@id/cb_brake"
+                        app:layout_constraintTop_toBottomOf="@id/cb_brake" />
+
+                    <CheckBox
+                        android:id="@+id/cb_qr_code"
+                        style="@style/bike_repair_checkbox_style"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="二维码"
+                        app:layout_constraintStart_toStartOf="@id/cb_brake"
+                        app:layout_constraintEnd_toEndOf="@id/cb_brake"
+                        app:layout_constraintTop_toBottomOf="@id/cb_bike_seat" />
+
+                    <CheckBox
+                        android:id="@+id/cb_battery"
+                        style="@style/bike_repair_checkbox_style"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="电池"
+                        app:layout_constraintStart_toStartOf="@id/cb_brake"
+                        app:layout_constraintEnd_toEndOf="@id/cb_brake"
+                        app:layout_constraintTop_toBottomOf="@id/cb_qr_code" />
+
+                    <CheckBox
+                        android:id="@+id/cb_fender"
+                        style="@style/bike_repair_checkbox_style"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="挡泥板"
+                        app:layout_constraintStart_toStartOf="@id/cb_brake"
+                        app:layout_constraintEnd_toEndOf="@id/cb_brake"
+                        app:layout_constraintTop_toBottomOf="@id/cb_battery" />
+
+                    <CheckBox
+                        android:id="@+id/cb_pedal"
+                        style="@style/bike_repair_checkbox_style"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="脚蹬"
+                        app:layout_constraintStart_toStartOf="@id/cb_brake"
+                        app:layout_constraintEnd_toEndOf="@id/cb_brake"
+                        app:layout_constraintTop_toBottomOf="@id/cb_fender" />
+
+                    <CheckBox
+                        android:id="@+id/cb_bike_head"
+                        style="@style/bike_repair_checkbox_style"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="龙头"
+                        app:layout_constraintHorizontal_bias="0.3"
+                        app:layout_constraintLeft_toRightOf="@id/iv_bike"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cb_brake" />
+
+                    <CheckBox
+                        android:id="@+id/cb_bike_basket"
+                        style="@style/bike_repair_checkbox_style"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="车篮"
+                        app:layout_constraintLeft_toLeftOf="@id/cb_bike_head"
+                        app:layout_constraintRight_toRightOf="@id/cb_bike_head"
+                        app:layout_constraintTop_toTopOf="@id/cb_bike_seat" />
+
+                    <CheckBox
+                        android:id="@+id/cb_bike_lights"
+                        style="@style/bike_repair_checkbox_style"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="车灯"
+                        app:layout_constraintLeft_toLeftOf="@id/cb_bike_basket"
+                        app:layout_constraintRight_toRightOf="@id/cb_bike_basket"
+                        app:layout_constraintTop_toTopOf="@id/cb_qr_code" />
+
+                    <CheckBox
+                        android:id="@+id/cb_line"
+                        style="@style/bike_repair_checkbox_style"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="线路"
+                        app:layout_constraintLeft_toLeftOf="@id/cb_bike_lights"
+                        app:layout_constraintRight_toRightOf="@id/cb_bike_lights"
+                        app:layout_constraintTop_toTopOf="@id/cb_battery" />
+
+                    <CheckBox
+                        android:id="@+id/cb_wheel"
+                        style="@style/bike_repair_checkbox_style"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="车轮"
+                        app:layout_constraintLeft_toLeftOf="@id/cb_line"
+                        app:layout_constraintRight_toRightOf="@id/cb_line"
+                        app:layout_constraintTop_toTopOf="@id/cb_fender" />
+
+                    <CheckBox
+                        android:id="@+id/cb_bike_support"
+                        style="@style/bike_repair_checkbox_style"
+                        android:background="@drawable/selector_bike_repair_checkbox"
+                        android:gravity="center"
+                        android:text="车撑"
+                        app:layout_constraintLeft_toLeftOf="@id/cb_wheel"
+                        app:layout_constraintRight_toRightOf="@id/cb_wheel"
+                        app:layout_constraintTop_toTopOf="@id/cb_pedal" />
+
+                    <TextView
+                        android:id="@+id/tv_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="其他"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_symbol1"
+                        app:layout_constraintTop_toBottomOf="@id/cb_pedal" />
+
+                    <EditText
+                        android:id="@+id/et_other"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="@dimen/default_horizontal_offset"
+                        android:gravity="center_vertical"
+                        android:hint="请描述故障现象"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_other"
+                        app:layout_constraintLeft_toRightOf="@id/tv_other"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_other" />
+
+                    <TextView
+                        android:id="@+id/tv_symbol2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:paddingTop="2dp"
+                        android:text="*"
+                        android:textColor="#FF2A2A"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_symbol1"
+                        app:layout_constraintTop_toBottomOf="@id/tv_other" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="拍照"
+                        android:textColor="@color/default_black_color"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toRightOf="@id/tv_symbol2"
+                        app:layout_constraintTop_toTopOf="@id/tv_symbol2" />
+
+                    <View
+                        android:id="@+id/photo_bg"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/photo_border"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_symbol1"
+                        app:layout_constraintTop_toBottomOf="@id/tv_symbol2" />
+
+                    <ImageView
+                        android:id="@+id/iv_camera"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_camera"
+                        app:layout_constraintBottom_toBottomOf="@id/photo_bg"
+                        app:layout_constraintLeft_toLeftOf="@id/photo_bg"
+                        app:layout_constraintRight_toRightOf="@id/photo_bg"
+                        app:layout_constraintTop_toTopOf="@id/photo_bg" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/bt_confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="@dimen/default_vertical_offset"
+                    android:background="@drawable/shape_rectangle_blue_content_radius_90dp"
+                    android:gravity="center"
+                    android:text="确认"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@id/cl_bike_message"
+                    app:layout_constraintRight_toRightOf="@id/cl_bike_message"
+                    app:layout_constraintTop_toBottomOf="@id/cl_bike_message" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
